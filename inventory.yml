@@ -1,0 +1,7 @@
+all:
+  hosts:
+    myserver:
+          ansible_host: #remote server ip
+          ansible_user: #remote username
+          ansible_ssh_pass: "123" #remote password
+          ansible_become: true
