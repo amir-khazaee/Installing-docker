@@ -1,0 +1,17 @@
+---
+- name: Copy and run Docker installation script on a remote server
+  hosts: myserver  # Replace with your host/group name defined in the inventory
+  become: yes               # Enables sudo for tasks
+  gather_facts: no
+
+  tasks:
+    - name: Copy Docker installation script to the remote server
+      ansible.builtin.copy:
+        src: files/install_docker.sh
+        dest: /tmp/install_docker.sh
+        mode: '0755'
+
+    - name: Run Docker installation script with sudo
+      ansible.builtin.shell: /tmp/install_docker.sh
+      args:
+        executable: /bin/bash
